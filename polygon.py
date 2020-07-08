@@ -1,6 +1,8 @@
 
 class Polygon:
-    """Polygon class creates instance and calculate a polygon"""
+    """Polygon class creates instance and provide
+    all calculation methods to solve equation which needs to
+    calculate a polygon"""
 
     def __init__(self, edges: int, circumradius: int) -> int:
         self._edges = edges
