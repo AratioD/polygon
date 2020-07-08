@@ -15,7 +15,7 @@ class Polygon:
     @edges.setter
     def edges(self, a):
         if a <= 2:
-            raise ValueError(f"Edges amount needs to be higher than {a}")
+            raise ValueError(f"Edges amount needs to be higher than 2")
         
     @property
     def circumradius(self):
@@ -43,7 +43,7 @@ def main():
     
     #test
     poly.circumradius = 1.2
-    poly.edges = 2
+    poly.edges = 3
     
     
 
