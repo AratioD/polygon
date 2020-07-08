@@ -16,6 +16,15 @@ class Polygon:
     def edges(self, a):
         if a <= 2:
             raise ValueError(f"Edges amount needs to be higher than {a}")
+        
+    @property
+    def circumradius(self):
+        return self._circumradius
+    
+    @circumradius.setter
+    def circumradius(self, a):
+        if a < 1:
+            raise ValueError(f"Circumradius needs to be higher than {a}")
 
 
 def main():
