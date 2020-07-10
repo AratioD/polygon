@@ -18,6 +18,8 @@ class Polygon:
     def n(self, n):
         if n <= 2:
             raise ValueError("ERROR! ns amount needs to be higher than 2")
+        elif isinstance(n, int):
+            raise ValueError("ERROR! variable n is not integer")
         else:
             self._n = n
 
@@ -29,6 +31,8 @@ class Polygon:
     def R(self, R):
         if R < 1:
             raise ValueError("ERROR! R needs to be higher than 1")
+        elif isinstance(n, int):
+            raise ValueError("ERROR! variable R is not integer")
         else:
             self._R = R
 
