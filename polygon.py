@@ -44,11 +44,11 @@ class Polygon:
 
     @property
     def s_edge_lenght(self):
-        return 2 * self.R * math.cos(math.pi/self.n)
+        return 2 * self.R * math.sin(math.pi/self.n)
 
     @property
     def a_apothem(self):
-        return self.R * math.sin(math.pi/self.n)
+        return self.R * math.cos(math.pi/self.n)
 
     @property
     def area(self):
