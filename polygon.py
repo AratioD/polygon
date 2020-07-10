@@ -15,7 +15,7 @@ class Polygon:
     @edge.setter
     def edge(self, edge):
         if edge <= 2:
-            raise ValueError("Edges amount needs to be higher than 2")
+            raise ValueError("ERROR! Edges amount needs to be higher than 2")
         else:
             self._edge = edge
 
@@ -26,23 +26,26 @@ class Polygon:
     @circumradius.setter
     def circumradius(self, circumradius):
         if circumradius < 1:
-            raise ValueError("Circumradius needs to be higher than 1")
+            raise ValueError("ERROR! Circumradius needs to be higher than 1")
         else:
             self._circumradius = circumradius
+            
+    def interior_angle(self):
+        return(self.edge)
 
     def __repr__(self):
-        return "Edges and circumradius({0}, {1})".format(self._edge, self._circumradius)
+        return "Edges and circumradius({0}, {1})".format(self.circumradius, self.edge)
 
     def __eq__(self, other):
-        return self._edge == other.edges and self._circumradius == other
+        return self.edge == other.edges and self.circumradius == other
 
     def __str__(self):
-        return "Polygon, cirumradius--> {0}, edges--> {1}".format(self._circumradius, self._edge)
+        return "Polygon, circumradius--> {0}, edges--> {1}".format(self.circumradius, self.edge)
 
 
 def main():
     """The main class"""
-    polygons = {(-3, -3), (5, 4), (7, 8), (23, 34),
+    polygons = {(5.4, 5.4), (5, 4), (7, 8), (23, 34),
                 (545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
     print(type(polygons))
@@ -58,6 +61,7 @@ def main():
     # Print all variables
     for k in poly_list:
         print(k)
+        # print(k.interior_angle)
 
 
 if __name__ == "__main__":
