@@ -29,9 +29,10 @@ class Polygon:
             raise ValueError("ERROR! Circumradius needs to be higher than 1")
         else:
             self._circumradius = circumradius
-            
+
+    @property
     def interior_angle(self):
-        return(self.edge)
+        return(self.edge-2) * (180/self.edge)
 
     def __repr__(self):
         return "Edges and circumradius({0}, {1})".format(self.circumradius, self.edge)
@@ -61,7 +62,8 @@ def main():
     # Print all variables
     for k in poly_list:
         print(k)
-        # print(k.interior_angle)
+       
+        print(k.interior_angle)
 
 
 if __name__ == "__main__":
