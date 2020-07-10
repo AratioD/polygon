@@ -5,8 +5,8 @@ class Polygon:
     calculate a polygon"""
 
     def __init__(self, edge: int, circumradius: int) -> int:
-        self._edge = edge
-        self._circumradius = circumradius
+        self.edge = edge
+        self.circumradius = circumradius
 
     @property
     def edge(self):
@@ -42,7 +42,7 @@ class Polygon:
 
 def main():
     """The main class"""
-    polygons = {(2, 3), (5, 4), (7, 8), (23, 34),
+    polygons = {(-3, -3), (5, 4), (7, 8), (23, 34),
                 (545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
     print(type(polygons))
@@ -51,6 +51,7 @@ def main():
     # R circumradius
     R = 40
 
+    # help(Polygon)
     for i in polygons:
         poly_list.append(Polygon(i[0], i[1]))
 
