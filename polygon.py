@@ -9,15 +9,15 @@ class Polygon:
     * R circumradius"""
 
     def __init__(self, n: int, R: int) -> int:
-        self.n = n
-        self.R = R
+        self.count_vertices = n
+        self.count_edges = R
 
     @property
-    def n(self):
+    def count_vertices(self):
         return self._n
 
-    @n.setter
-    def n(self, n):
+    @count_vertices.setter
+    def count_vertices(self, n):
         if n <= 2:
             raise ValueError("ERROR! ns amount needs to be higher than 2")
         elif not isinstance(n, int):
@@ -26,11 +26,11 @@ class Polygon:
             self._n = n
 
     @property
-    def R(self):
+    def count_edges(self):
         return self._R
 
-    @R.setter
-    def R(self, R):
+    @count_edges.setter
+    def count_edges(self, R):
         if R < 1:
             raise ValueError("ERROR! R needs to be higher than 1")
         elif not isinstance(R, int):
@@ -40,32 +40,32 @@ class Polygon:
 
     @property
     def interior_angle(self):
-        return(self.n-2) * 180 / self.n
+        return(self.count_vertices-2) * 180 / self.count_vertices
 
     @property
     def s_edge_lenght(self):
-        return 2 * self.R * math.sin(math.pi/self.n)
+        return 2 * self.count_edges * math.sin(math.pi/self.count_vertices)
 
     @property
     def a_apothem(self):
-        return self.R * math.cos(math.pi/self.n)
+        return self.count_edges * math.cos(math.pi/self.count_vertices)
 
     @property
     def area(self):
-        return 1/2 * self.n * self.s_edge_lenght * self.a_apothem
+        return 1/2 * self.count_vertices * self.s_edge_lenght * self.a_apothem
 
     @property
     def perimeter(self):
-        return self.n * self.s_edge_lenght
+        return self.count_vertices * self.s_edge_lenght
 
     def __repr__(self):
-        return "ns and R({0}, {1})".format(self.R, self.n)
+        return "ns and R({0}, {1})".format(self.R, self.count_vertices)
 
     # def __eq__(self, other):
-    #     return self.n == other.ns and self.R == other
+    #     return self.count_vertices == other.ns and self.R == other
 
     def __str__(self):
-        return "Polygon, R--> {0}, ns--> {1}".format(self.R, self.n)
+        return "Polygon, R--> {0}, ns--> {1}".format(self.count_edges, self.count_vertices)
 
 
 def main():
@@ -82,7 +82,6 @@ def main():
     # help(Polygon)
     for i in polygons:
         poly_list.append(Polygon(i[0], i[1]))
-        
 
     # Print all variables
     for k in poly_list:
@@ -90,17 +89,16 @@ def main():
 
         print("interior angle -->", k.interior_angle, " edge lenght -->",
               k.s_edge_lenght, " apothem -->", k.a_apothem, " area -->", k.area, " perimeter--> ", k.perimeter)
-        
+
+
 def test_polygon():
     n = 3
     R = 1
-    p = Polygon(n,R)
+    p = Polygon(n, R)
     assert str(p) == f"Polygon(n=3,R=1)", f"actual:  {str(p)}"
-    
-    
-    
+    # assert p.count_ver
 
 
 if __name__ == "__main__":
     main()
-    test_polygon()
+    # test_polygon()
