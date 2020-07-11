@@ -11,10 +11,10 @@ class Polygon:
     def __init__(self, n: int, R: int) -> int:
         self.count_vertices = n
         self.count_edges = R
-    
+
     def __repr__(self):
         # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-        return f'Polygon(n={self.count_vertices}, R={self.count_edges})'
+        return f"Polygon(n={self.count_vertices},R={self.count_edges})"
 
     @property
     def count_vertices(self):
@@ -61,12 +61,13 @@ class Polygon:
     @property
     def perimeter(self):
         return self.count_vertices * self.s_edge_lenght
-    
+
     # def __eq__(self, other):
     #     return self.count_vertices == other.ns and self.R == other
 
     def __str__(self):
-        return "Polygon, R--> {0}, n--> {1}".format(self.count_edges, self.count_vertices)
+        # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
+        return "Polygon(n={0}, R={1})".format(self.count_vertices, self.count_edges)
 
 
 def main():
@@ -96,10 +97,10 @@ def test_polygon():
     n = 3
     R = 1
     p = Polygon(n, R)
-    assert str(p) == f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
+    assert str(p) == f"Polygon(n=3, R=1)", f"actual:  {str(p)}"
     # assert p.count_ver
 
 
 if __name__ == "__main__":
     main()
-    # test_polygon()
+    test_polygon()
