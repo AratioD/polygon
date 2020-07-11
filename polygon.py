@@ -99,6 +99,8 @@ def test_polygon():
     p = Polygon(n, R)
     assert str(p) == f"Polygon(n=3, R=1)", f"actual-->  {str(p)}"
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    assert p.count_edges == R, (f"actual: {p.count_edges}")
+    assert p.interior_angle == 60, (f"actual: {p.count_edges}")
 
 
 if __name__ == "__main__":
