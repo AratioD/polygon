@@ -11,6 +11,9 @@ class Polygon:
     def __init__(self, n: int, R: int) -> int:
         self.count_vertices = n
         self.count_edges = R
+    
+    def __repr__(self):
+        return f"Polygon(n={self.count_vertices}, R={self.count_edges})"
 
     @property
     def count_vertices(self):
@@ -57,10 +60,7 @@ class Polygon:
     @property
     def perimeter(self):
         return self.count_vertices * self.s_edge_lenght
-
-    def __repr__(self):
-        return "ns and R({0}, {1})".format(self.R, self.count_vertices)
-
+    
     # def __eq__(self, other):
     #     return self.count_vertices == other.ns and self.R == other
 
@@ -101,4 +101,4 @@ def test_polygon():
 
 if __name__ == "__main__":
     main()
-    # test_polygon()
+    test_polygon()
