@@ -13,7 +13,8 @@ class Polygon:
         self.count_edges = R
     
     def __repr__(self):
-        return f"Polygon(n={self.count_vertices}, R={self.count_edges})"
+        # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
+        return f'Polygon(n={self.count_vertices}, R={self.count_edges})'
 
     @property
     def count_vertices(self):
@@ -55,7 +56,7 @@ class Polygon:
 
     @property
     def area(self):
-        return 1/2 * self.count_vertices * self.s_edge_lenght * self.a_apothem
+        return self.count_vertices / 2 * self.s_edge_lenght * self.a_apothem
 
     @property
     def perimeter(self):
@@ -65,12 +66,12 @@ class Polygon:
     #     return self.count_vertices == other.ns and self.R == other
 
     def __str__(self):
-        return "Polygon, R--> {0}, ns--> {1}".format(self.count_edges, self.count_vertices)
+        return "Polygon, R--> {0}, n--> {1}".format(self.count_edges, self.count_vertices)
 
 
 def main():
     """The main class"""
-    polygons = {(4, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
+    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
                 (545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
     # print(type(polygons))
@@ -87,18 +88,18 @@ def main():
     for k in poly_list:
         print(k)
 
-        print("interior angle -->", k.interior_angle, " edge lenght -->",
-              k.s_edge_lenght, " apothem -->", k.a_apothem, " area -->", k.area, " perimeter--> ", k.perimeter)
+        # print("interior angle -->", k.interior_angle, " edge lenght -->",
+        #       k.s_edge_lenght, " apothem -->", k.a_apothem, " area -->", k.area, " perimeter--> ", k.perimeter)
 
 
 def test_polygon():
     n = 3
     R = 1
     p = Polygon(n, R)
-    assert str(p) == f"Polygon(n=3,R=1)", f"actual:  {str(p)}"
+    assert str(p) == f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
     # assert p.count_ver
 
 
 if __name__ == "__main__":
     main()
-    test_polygon()
+    # test_polygon()
