@@ -97,8 +97,8 @@ def test_polygon():
     n = 3
     R = 1
     p = Polygon(n, R)
-    assert str(p) == f"Polygon(n=3, R=1)", f"actual:  {str(p)}"
-    # assert p.count_ver
+    assert str(p) == f"Polygon(n=3, R=1)", f"actual-->  {str(p)}"
+    assert p.count_vertices == n, (f"actual: {p.count_vertices}")
 
 
 if __name__ == "__main__":
