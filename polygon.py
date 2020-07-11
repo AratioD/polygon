@@ -82,6 +82,7 @@ def main():
     # help(Polygon)
     for i in polygons:
         poly_list.append(Polygon(i[0], i[1]))
+        
 
     # Print all variables
     for k in poly_list:
@@ -89,7 +90,17 @@ def main():
 
         print("interior angle -->", k.interior_angle, " edge lenght -->",
               k.s_edge_lenght, " apothem -->", k.a_apothem, " area -->", k.area, " perimeter--> ", k.perimeter)
+        
+def test_polygon():
+    n = 3
+    R = 1
+    p = Polygon(n,R)
+    assert str(p) == f"Polygon(n=3,R=1)", f"actual:  {str(p)}"
+    
+    
+    
 
 
 if __name__ == "__main__":
     main()
+    test_polygon()
