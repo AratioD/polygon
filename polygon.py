@@ -119,7 +119,9 @@ def test_polygon():
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
     assert p.count_edges == R, (f"actual: {p.count_edges}")
     assert p.interior_angle == 90, (f"actual: {p.count_edges}")
-    assert p.area == 2.0, (f"actual: {p.area}, "
+    assert math.isclose(p.area, 2.0,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol), (f"actual: {p.area}, "
                            f" expected: {2.0}")
 
 
