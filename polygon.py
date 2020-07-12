@@ -94,6 +94,15 @@ def main():
 
 
 def test_polygon():
+    """
+    The test class, which includes 2 separate tests that all changes are correct in the code.
+    The class use relative and absolute tolerances set up 0.001 accuracy.
+    """
+    # Relative tolerance
+    rel_tol = 0.001
+    # Absolute tolerance level
+    abs_tol = 0.001
+    
     n = 3
     R = 1
     p = Polygon(n, R)
@@ -102,7 +111,18 @@ def test_polygon():
     assert p.count_edges == R, (f"actual: {p.count_edges}")
     assert p.interior_angle == 60, (f"actual: {p.count_edges}")
 
+    n = 4
+    R = 1
+    p = Polygon(n, R)
+
+    assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
+    assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    assert p.count_edges == R, (f"actual: {p.count_edges}")
+    assert p.interior_angle == 90, (f"actual: {p.count_edges}")
+    assert p.area == 2.0, (f"actual: {p.area}, "
+                           f" expected: {2.0}")
+
 
 if __name__ == "__main__":
-    main()
     test_polygon()
+    main()
