@@ -2,11 +2,13 @@ import math
 
 
 class Polygon:
-    """Polygon class creates instance and provide
+    """
+    Polygon class creates instance and provide
     all calculation methods to solve equation which needs to
     calculate a polygon. The Polygon class will create an instance using these parameters 
     * n edges(=n vertices)
-    * R circumradius"""
+    * R circumradius
+    """
 
     def __init__(self, n: int, R: int) -> int:
         self.count_vertices = n
@@ -102,7 +104,7 @@ def test_polygon():
     rel_tol = 0.001
     # Absolute tolerance level
     abs_tol = 0.001
-    
+
     n = 3
     R = 1
     p = Polygon(n, R)
@@ -118,11 +120,17 @@ def test_polygon():
     assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
     assert p.count_edges == R, (f"actual: {p.count_edges}")
-    assert p.interior_angle == 90, (f"actual: {p.count_edges}")
+    assert math.isclose(p.interior_angle, 90, 
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
     assert math.isclose(p.area, 2.0,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol), (f"actual: {p.area}, "
-                           f" expected: {2.0}")
+                                           f" expected: {2.0}")
+                        
+    assert math.isclose(p.perimeter, 4*math.sqrt(2),
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
 
 
 if __name__ == "__main__":
