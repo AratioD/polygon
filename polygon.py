@@ -120,15 +120,19 @@ def test_polygon():
     assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
     assert p.count_edges == R, (f"actual: {p.count_edges}")
-    assert math.isclose(p.interior_angle, 90, 
+    assert math.isclose(p.interior_angle, 90,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
     assert math.isclose(p.area, 2.0,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol), (f"actual: {p.area}, "
                                            f" expected: {2.0}")
-                        
+
     assert math.isclose(p.perimeter, 4*math.sqrt(2),
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    assert math.isclose(p.a_apothem, 0.707,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
 
