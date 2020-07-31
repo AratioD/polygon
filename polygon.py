@@ -69,7 +69,7 @@ class Polygon:
             return (self.count_edges == other.count_edges and self.count_vertices == other.count_vertices)
         else:
             return NotImplemented
-    
+
     def __gt__(self, other):
         if isinstance(other, Polygon):
             return self.count_vertices > other.count_vertices
@@ -187,6 +187,26 @@ def test_polygon():
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
 
+    p1 = Polygon(3, 10)
+    p2 = Polygon(10, 10)
+    p3 = Polygon(15, 10)
+    p4 = Polygon(15, 100)
+    p5 = Polygon(15, 100)
+    # p6 = Polygon(1,10)
+    # Test number 5
+    assert p2 > p1
+
+    # Test number 6
+    assert p2 < p3
+    
+    # Test number 7
+    assert p3 != p4
+
+    # Test number 8
+    assert p1 != p4
+    
+    # Test number 9
+    assert p4 == p5
 
 if __name__ == "__main__":
     test_polygon()
