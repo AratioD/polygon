@@ -64,8 +64,17 @@ class Polygon:
     def perimeter(self):
         return self.count_vertices * self.s_edge_lenght
 
-    # def __eq__(self, other):
-    #     return self.count_vertices == other.ns and self.R == other
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return (self.count_edges == other.count_edges and self.count_vertices == other.count_vertices)
+        else:
+            return NotImplemented
+    
+    def __gt__(self, other):
+        if isinstance(other, Polygon):
+            return self.count_vertices > other.count_vertices
+        else:
+            return NotImplemented
 
     def __str__(self):
         # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
@@ -77,11 +86,6 @@ def main():
     polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
                 (545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
-    # print(type(polygons))
-    # # n ns
-    # n = 4
-    # # R R
-    # R = 40
 
     # help(Polygon)
     for i in polygons:
@@ -90,9 +94,6 @@ def main():
     # Print all variables
     for k in poly_list:
         print(k)
-
-        # print("interior angle -->", k.interior_angle, " edge lenght -->",
-        #       k.s_edge_lenght, " apothem -->", k.a_apothem, " area -->", k.area, " perimeter--> ", k.perimeter)
 
 
 def test_polygon():
@@ -143,9 +144,6 @@ def test_polygon():
     R = 2
     p = Polygon(n, R)
 
-    # assert str(p) == f"Polygon(n=6, R=2)", f"actual-->  {str(p)}"
-    # assert p.count_vertices == n, (f"actual: {p.count_vertices}")
-    # assert p.count_edges == R, (f"actual: {p.count_edges}")
     assert math.isclose(p.interior_angle, 120,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
@@ -163,29 +161,31 @@ def test_polygon():
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
 
-    # # Test number 4
-    # n = 12
-    # R = 3
-    # p = Polygon(n, R)
+    # Test number 4
+    n = 12
+    R = 3
+    p = Polygon(n, R)
 
-    # assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
-    # assert p.count_vertices == n, (f"actual: {p.count_vertices}")
-    # assert p.count_edges == R, (f"actual: {p.count_edges}")
-    # assert math.isclose(p.interior_angle, 90,
-    #                     rel_tol=rel_tol,
-    #                     abs_tol=abs_tol)
-    # assert math.isclose(p.area, 2.0,
-    #                     rel_tol=rel_tol,
-    #                     abs_tol=abs_tol), (f"actual: {p.area}, "
-    #                                        f" expected: {2.0}")
+    assert math.isclose(p.interior_angle, 150,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
 
-    # assert math.isclose(p.perimeter, 4*math.sqrt(2),
-    #                     rel_tol=rel_tol,
-    #                     abs_tol=abs_tol)
+    assert math.isclose(p.area, 27,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol), (f"actual: {p.area}, "
+                                           f" expected: {10.3923}")
 
-    # assert math.isclose(p.a_apothem, 0.707,
-    #                     rel_tol=rel_tol,
-    #                     abs_tol=abs_tol)
+    assert math.isclose(p.s_edge_lenght, 1.55291,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    assert math.isclose(p.perimeter, 18.635,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    assert math.isclose(p.a_apothem, 2.89778,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
 
 
 if __name__ == "__main__":
