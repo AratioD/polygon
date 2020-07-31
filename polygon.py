@@ -105,6 +105,7 @@ def test_polygon():
     # Absolute tolerance level
     abs_tol = 0.001
 
+    # Test number 1
     n = 3
     R = 1
     p = Polygon(n, R)
@@ -113,6 +114,7 @@ def test_polygon():
     assert p.count_edges == R, (f"actual: {p.count_edges}")
     assert p.interior_angle == 60, (f"actual: {p.count_edges}")
 
+    # Test number 2
     n = 4
     R = 1
     p = Polygon(n, R)
@@ -135,6 +137,55 @@ def test_polygon():
     assert math.isclose(p.a_apothem, 0.707,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
+
+    # Test number 3
+    n = 6
+    R = 2
+    p = Polygon(n, R)
+
+    # assert str(p) == f"Polygon(n=6, R=2)", f"actual-->  {str(p)}"
+    # assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    # assert p.count_edges == R, (f"actual: {p.count_edges}")
+    assert math.isclose(p.interior_angle, 120,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    assert math.isclose(p.area, 10.3923,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol), (f"actual: {p.area}, "
+                                           f" expected: {10.3923}")
+
+    assert math.isclose(p.s_edge_lenght, 2,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    assert math.isclose(p.a_apothem, 1.73205,
+                        rel_tol=rel_tol,
+                        abs_tol=abs_tol)
+
+    # # Test number 4
+    # n = 12
+    # R = 3
+    # p = Polygon(n, R)
+
+    # assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
+    # assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    # assert p.count_edges == R, (f"actual: {p.count_edges}")
+    # assert math.isclose(p.interior_angle, 90,
+    #                     rel_tol=rel_tol,
+    #                     abs_tol=abs_tol)
+    # assert math.isclose(p.area, 2.0,
+    #                     rel_tol=rel_tol,
+    #                     abs_tol=abs_tol), (f"actual: {p.area}, "
+    #                                        f" expected: {2.0}")
+
+    # assert math.isclose(p.perimeter, 4*math.sqrt(2),
+    #                     rel_tol=rel_tol,
+    #                     abs_tol=abs_tol)
+
+    # assert math.isclose(p.a_apothem, 0.707,
+    #                     rel_tol=rel_tol,
+    #                     abs_tol=abs_tol)
 
 
 if __name__ == "__main__":
