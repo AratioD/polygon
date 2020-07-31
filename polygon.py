@@ -192,7 +192,13 @@ def test_polygon():
     p3 = Polygon(15, 10)
     p4 = Polygon(15, 100)
     p5 = Polygon(15, 100)
-    # p6 = Polygon(1,10)
+    try:
+        p6 = Polygon(1,10)
+        assert False, ('Createing a polygon with 2 sided: '
+                       ' Expectiong expected, not received')
+    except ValueError:
+        pass
+  
     # Test number 5
     assert p2 > p1
 
