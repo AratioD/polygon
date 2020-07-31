@@ -1,6 +1,5 @@
 import math
 
-
 class Polygon:
     """
     Polygon class creates instance and provide
@@ -11,23 +10,23 @@ class Polygon:
     """
 
     def __init__(self, n: int, R: int) -> int:
-        self._count_vertices = n
-        self._circumradius = R
+        self._n = n
+        self._R = R
         # self._polygons = [Polygon(i, R) for i in range(3, 9)]
 
     # def __repr__(self):
     #     # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-    #     return f"Polygon(n={self.count_vertices},R={self.circumradius})"
+    #     return f"Polygon(n={self.edges},R={self.circumradius})"
     
     # def __len__(self):
     #     return self._n -2
 
     @property
-    def count_vertices(self):
+    def edges(self):
         return self._n
 
-    @count_vertices.setter
-    def count_vertices(self, n):
+    @edges.setter
+    def edges(self, n):
         if n <= 2:
             raise ValueError("ERROR! ns amount needs to be higher than 2")
         elif not isinstance(n, int):
@@ -50,33 +49,33 @@ class Polygon:
 
     @property
     def interior_angle(self):
-        return(self.count_vertices-2) * 180 / self.count_vertices
+        return(self.edges-2) * 180 / self.edges
 
     @property
     def s_edge_lenght(self):
-        return 2 * self.circumradius * math.sin(math.pi/self.count_vertices)
+        return 2 * self.circumradius * math.sin(math.pi/self.edges)
 
     @property
     def a_apothem(self):
-        return self.circumradius * math.cos(math.pi/self.count_vertices)
+        return self.circumradius * math.cos(math.pi/self.edges)
 
     @property
     def area(self):
-        return self.count_vertices / 2 * self.s_edge_lenght * self.a_apothem
+        return self.edges / 2 * self.s_edge_lenght * self.a_apothem
 
     @property
     def perimeter(self):
-        return self.count_vertices * self.s_edge_lenght
+        return self.edges * self.s_edge_lenght
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
-            return (self.circumradius == other.circumradius and self.count_vertices == other.count_vertices)
+            return (self.circumradius == other.circumradius and self.edges == other.edges)
         else:
             return NotImplemented
 
     def __gt__(self, other):
         if isinstance(other, Polygon):
-            return self.count_vertices > other.count_vertices
+            return self.edges > other.edges
         else:
             return NotImplemented
     
@@ -85,7 +84,7 @@ class Polygon:
 
     def __str__(self):
         # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-        return "Polygon(n={0}, R={1})".format(self.count_vertices, self.circumradius)
+        return "Polygon(n={0}, R={1})".format(self.edges, self.circumradius)
 
 
 def main():
@@ -120,7 +119,7 @@ def test_polygon():
     R = 1
     p = Polygon(n, R)
     assert str(p) == f"Polygon(n=3, R=1)", f"actual-->  {str(p)}"
-    assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    assert p.edges == n, (f"actual: {p.edges}")
     assert p.circumradius == R, (f"actual: {p.circumradius}")
     assert p.interior_angle == 60, (f"actual: {p.circumradius}")
 
@@ -130,7 +129,7 @@ def test_polygon():
     p = Polygon(n, R)
 
     assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
-    assert p.count_vertices == n, (f"actual: {p.count_vertices}")
+    assert p.edges == n, (f"actual: {p.edges}")
     assert p.circumradius == R, (f"actual: {p.circumradius}")
     assert math.isclose(p.interior_angle, 90,
                         rel_tol=rel_tol,
@@ -201,12 +200,12 @@ def test_polygon():
     p3 = Polygon(15, 10)
     p4 = Polygon(15, 100)
     p5 = Polygon(15, 100)
-    try:
-        p6 = Polygon(1, 10)
-        assert False, ('Createing a polygon with 2 sided: '
-                       ' Expectiong expected, not received')
-    except ValueError:
-        pass
+    # try:
+    #     p6 = Polygon(1, 10)
+    #     assert False, ('Createing a polygon with 2 sided: '
+    #                    ' Expectiong expected, not received')
+    # except ValueError:
+    #     pass
 
     # Test number 5
     assert p2 > p1
