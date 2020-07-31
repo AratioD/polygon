@@ -11,12 +11,16 @@ class Polygon:
     """
 
     def __init__(self, n: int, R: int) -> int:
-        self.count_vertices = n
-        self.circumradius = R
+        self._count_vertices = n
+        self._circumradius = R
+        # self._polygons = [Polygon(i, R) for i in range(3, 9)]
 
-    def __repr__(self):
-        # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-        return f"Polygon(n={self.count_vertices},R={self.circumradius})"
+    # def __repr__(self):
+    #     # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
+    #     return f"Polygon(n={self.count_vertices},R={self.circumradius})"
+    
+    # def __len__(self):
+    #     return self._n -2
 
     @property
     def count_vertices(self):
@@ -75,6 +79,9 @@ class Polygon:
             return self.count_vertices > other.count_vertices
         else:
             return NotImplemented
+    
+    # def __getitem__(self, s):
+    #     return self._polygons[s]
 
     def __str__(self):
         # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
@@ -83,10 +90,12 @@ class Polygon:
 
 def main():
     """The main class"""
-    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
-                (545, 5656), (3, 3), (4, 4), (6, 6)}
+    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),(545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
 
+    # ff = Polygon(8,1)
+    # for p in ff:
+    #     print("d", p)
     # help(Polygon)
     for i in polygons:
         poly_list.append(Polygon(i[0], i[1]))
@@ -193,26 +202,27 @@ def test_polygon():
     p4 = Polygon(15, 100)
     p5 = Polygon(15, 100)
     try:
-        p6 = Polygon(1,10)
+        p6 = Polygon(1, 10)
         assert False, ('Createing a polygon with 2 sided: '
                        ' Expectiong expected, not received')
     except ValueError:
         pass
-  
+
     # Test number 5
     assert p2 > p1
 
     # Test number 6
     assert p2 < p3
-    
+
     # Test number 7
     assert p3 != p4
 
     # Test number 8
     assert p1 != p4
-    
+
     # Test number 9
     assert p4 == p5
+
 
 if __name__ == "__main__":
     test_polygon()
