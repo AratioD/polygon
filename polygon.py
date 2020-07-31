@@ -12,11 +12,11 @@ class Polygon:
 
     def __init__(self, n: int, R: int) -> int:
         self.count_vertices = n
-        self.count_edges = R
+        self.circumradius = R
 
     def __repr__(self):
         # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-        return f"Polygon(n={self.count_vertices},R={self.count_edges})"
+        return f"Polygon(n={self.count_vertices},R={self.circumradius})"
 
     @property
     def count_vertices(self):
@@ -32,11 +32,11 @@ class Polygon:
             self._n = n
 
     @property
-    def count_edges(self):
+    def circumradius(self):
         return self._R
 
-    @count_edges.setter
-    def count_edges(self, R):
+    @circumradius.setter
+    def circumradius(self, R):
         if R < 1:
             raise ValueError("ERROR! R needs to be higher than 1")
         elif not isinstance(R, int):
@@ -50,11 +50,11 @@ class Polygon:
 
     @property
     def s_edge_lenght(self):
-        return 2 * self.count_edges * math.sin(math.pi/self.count_vertices)
+        return 2 * self.circumradius * math.sin(math.pi/self.count_vertices)
 
     @property
     def a_apothem(self):
-        return self.count_edges * math.cos(math.pi/self.count_vertices)
+        return self.circumradius * math.cos(math.pi/self.count_vertices)
 
     @property
     def area(self):
@@ -66,7 +66,7 @@ class Polygon:
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
-            return (self.count_edges == other.count_edges and self.count_vertices == other.count_vertices)
+            return (self.circumradius == other.circumradius and self.count_vertices == other.count_vertices)
         else:
             return NotImplemented
 
@@ -78,7 +78,7 @@ class Polygon:
 
     def __str__(self):
         # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-        return "Polygon(n={0}, R={1})".format(self.count_vertices, self.count_edges)
+        return "Polygon(n={0}, R={1})".format(self.count_vertices, self.circumradius)
 
 
 def main():
@@ -112,8 +112,8 @@ def test_polygon():
     p = Polygon(n, R)
     assert str(p) == f"Polygon(n=3, R=1)", f"actual-->  {str(p)}"
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
-    assert p.count_edges == R, (f"actual: {p.count_edges}")
-    assert p.interior_angle == 60, (f"actual: {p.count_edges}")
+    assert p.circumradius == R, (f"actual: {p.circumradius}")
+    assert p.interior_angle == 60, (f"actual: {p.circumradius}")
 
     # Test number 2
     n = 4
@@ -122,7 +122,7 @@ def test_polygon():
 
     assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
     assert p.count_vertices == n, (f"actual: {p.count_vertices}")
-    assert p.count_edges == R, (f"actual: {p.count_edges}")
+    assert p.circumradius == R, (f"actual: {p.circumradius}")
     assert math.isclose(p.interior_angle, 90,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
