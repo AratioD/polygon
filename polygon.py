@@ -1,5 +1,24 @@
 import math
 
+
+class ManyPolygons:
+    def __init__(self, m, R):
+        if m < 3:
+            raise ValueError('n must be greater than 3')
+        self._m = m
+        self._R = R
+        self._polygons = [Polygon(i, R) for i in range(3, m+1)]
+
+    def __repr__(self):
+        return f"Polygon(n={self._m},R={self._R})"
+
+    def __getitem__(self, s):
+        return self._polygons[s]
+    
+    # @property
+    
+
+
 class Polygon:
     """
     Polygon class creates instance and provide
@@ -12,14 +31,6 @@ class Polygon:
     def __init__(self, n: int, R: int) -> int:
         self._n = n
         self._R = R
-        # self._polygons = [Polygon(i, R) for i in range(3, 9)]
-
-    # def __repr__(self):
-    #     # f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
-    #     return f"Polygon(n={self.edges},R={self.circumradius})"
-    
-    # def __len__(self):
-    #     return self._n -2
 
     @property
     def edges(self):
@@ -78,7 +89,7 @@ class Polygon:
             return self.edges > other.edges
         else:
             return NotImplemented
-    
+
     # def __getitem__(self, s):
     #     return self._polygons[s]
 
@@ -89,7 +100,10 @@ class Polygon:
 
 def main():
     """The main class"""
-    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),(545, 5656), (3, 3), (4, 4), (6, 6)}
+
+    # p = Polygon(10, 1)
+    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
+                (545, 5656), (3, 3), (4, 4), (6, 6)}
     poly_list = []
 
     # ff = Polygon(8,1)
@@ -102,6 +116,9 @@ def main():
     # Print all variables
     for k in poly_list:
         print(k)
+
+    # for cc in p:
+    #     print(cc)
 
 
 def test_polygon():
@@ -224,5 +241,5 @@ def test_polygon():
 
 
 if __name__ == "__main__":
-    test_polygon()
+    # test_polygon()
     main()
