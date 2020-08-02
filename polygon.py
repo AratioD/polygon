@@ -103,11 +103,11 @@ class Polygon:
 
 def main():
     """The main class"""
-    many_polygons = ManyPolygons(20, 4)
+    pp = ManyPolygons(20, 4)
     # Prints the Polygon with the highest area : perimeter ratio
-    print(many_polygons.max_efficiency_polygon)
+    print(pp.max_efficiency_polygon)
     # Prints all
-    ([(print(p), print(p.area/p.perimeter)) for p in many_polygons])
+    ([(print(p), print(p.area/p.perimeter)) for p in pp])
 
 
 def test_polygon():
