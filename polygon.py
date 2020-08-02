@@ -2,6 +2,10 @@ import math
 
 
 class ManyPolygons:
+    """
+    Unleash many polygons creation.
+    """
+    
     def __init__(self, m, R):
         if m < 3:
             raise ValueError('n must be greater than 3')
@@ -10,7 +14,7 @@ class ManyPolygons:
         self._polygons = [Polygon(i, R) for i in range(3, m+1)]
 
     def __repr__(self):
-        return f"Polygoöön(n={self._m},R={self._R})"
+        return f"Polygon(n={self._m},R={self._R})"
 
     def __getitem__(self, s):
         return self._polygons[s]
@@ -93,11 +97,7 @@ class Polygon:
         else:
             return NotImplemented
 
-    # def __getitem__(self, s):
-    #     return self._polygons[s]
-
     def __str__(self):
-        # = f'Polygon(n=3,R=1)', f'actual:  {str(p)}'
         return "Polygon(n={0}, R={1})".format(self.edges, self.circumradius)
 
 
@@ -105,27 +105,26 @@ def main():
     """The main class"""
 
     # p = Polygon(10, 1)
-    polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
-                (545, 5656), (3, 3), (4, 4), (6, 6)}
-    poly_list = []
+    # polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
+    #             (545, 5656), (3, 3), (4, 4), (6, 6)}
+    # poly_list = []
 
-    # ff = Polygon(8,1)
-    # for p in ff:
-    #     print("d", p)
-    # help(Polygon)
-    for i in polygons:
-        poly_list.append(Polygon(i[0], i[1]))
+    # # ff = Polygon(8,1)
+    # # for p in ff:
+    # #     print("d", p)
+    # # help(Polygon)
+    # # for i in polygons:
+    # #     poly_list.append(Polygon(i[0], i[1]))
 
-    # Print all variables
-    for k in poly_list:
-        print(k)
+    # # Print all variables
+    # for k in poly_list:
+    #     print(k)
         
-    tt = ManyPolygons(10,4)
+    tt = ManyPolygons(100,4)
     # tt.max_efficiency_polygon
     print(tt.max_efficiency_polygon)
-    print([(p, p.area/p.perimeter) for p in tt])
-    # for cc in p:
-    #     print(cc)
+    ([(print(p), p.area/p.perimeter) for p in tt])
+
 
 
 def test_polygon():
