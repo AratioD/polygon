@@ -3,12 +3,12 @@ import math
 
 class ManyPolygons:
     """
-    Unleash many polygons creation.
+    ManyPolygon class calls the Polygon class and creates many polygons as needed.
     """
-    
+
     def __init__(self, m, R):
         if m < 3:
-            raise ValueError('n must be greater than 3')
+            raise ValueError('m must be greater than 3')
         self._m = m
         self._R = R
         self._polygons = [Polygon(i, R) for i in range(3, m+1)]
@@ -18,10 +18,10 @@ class ManyPolygons:
 
     def __getitem__(self, s):
         return self._polygons[s]
-    
+
     @property
     def max_efficiency_polygon(self):
-        sorted_polygons = sorted(self._polygons, 
+        sorted_polygons = sorted(self._polygons,
                                  key=lambda p: p.area/p.perimeter, reverse=True)
         return sorted_polygons[0]
 
@@ -103,28 +103,10 @@ class Polygon:
 
 def main():
     """The main class"""
-
-    # p = Polygon(10, 1)
-    # polygons = {(14, 7877), (4, 5), (5, 4), (7, 8), (23, 34),
-    #             (545, 5656), (3, 3), (4, 4), (6, 6)}
-    # poly_list = []
-
-    # # ff = Polygon(8,1)
-    # # for p in ff:
-    # #     print("d", p)
-    # # help(Polygon)
-    # # for i in polygons:
-    # #     poly_list.append(Polygon(i[0], i[1]))
-
-    # # Print all variables
-    # for k in poly_list:
-    #     print(k)
-        
-    tt = ManyPolygons(100,4)
+    many_polygons = ManyPolygons(20, 4)
     # tt.max_efficiency_polygon
-    print(tt.max_efficiency_polygon)
-    ([(print(p), p.area/p.perimeter) for p in tt])
-
+    print(many_polygons.max_efficiency_polygon)
+    ([(print(p), print(p.area/p.perimeter)) for p in many_polygons])
 
 
 def test_polygon():
