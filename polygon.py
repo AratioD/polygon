@@ -10,13 +10,16 @@ class ManyPolygons:
         self._polygons = [Polygon(i, R) for i in range(3, m+1)]
 
     def __repr__(self):
-        return f"Polygon(n={self._m},R={self._R})"
+        return f"Polygoöön(n={self._m},R={self._R})"
 
     def __getitem__(self, s):
         return self._polygons[s]
     
-    # @property
-    
+    @property
+    def max_efficiency_polygon(self):
+        sorted_polygons = sorted(self._polygons, 
+                                 key=lambda p: p.area/p.perimeter, reverse=True)
+        return sorted_polygons[0]
 
 
 class Polygon:
@@ -116,7 +119,11 @@ def main():
     # Print all variables
     for k in poly_list:
         print(k)
-
+        
+    tt = ManyPolygons(10,4)
+    # tt.max_efficiency_polygon
+    print(tt.max_efficiency_polygon)
+    print([(p, p.area/p.perimeter) for p in tt])
     # for cc in p:
     #     print(cc)
 
