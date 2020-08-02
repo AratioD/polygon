@@ -104,8 +104,9 @@ class Polygon:
 def main():
     """The main class"""
     many_polygons = ManyPolygons(20, 4)
-    # tt.max_efficiency_polygon
+    # Prints the Polygon with the highest area : perimeter ratio
     print(many_polygons.max_efficiency_polygon)
+    # Prints all
     ([(print(p), print(p.area/p.perimeter)) for p in many_polygons])
 
 
@@ -200,17 +201,12 @@ def test_polygon():
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
 
+    # Test objects initialization
     p1 = Polygon(3, 10)
     p2 = Polygon(10, 10)
     p3 = Polygon(15, 10)
     p4 = Polygon(15, 100)
     p5 = Polygon(15, 100)
-    # try:
-    #     p6 = Polygon(1, 10)
-    #     assert False, ('Createing a polygon with 2 sided: '
-    #                    ' Expectiong expected, not received')
-    # except ValueError:
-    #     pass
 
     # Test number 5
     assert p2 > p1
