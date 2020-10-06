@@ -35,7 +35,7 @@ class Polygon:
     * R circumradius
     """
 
-    def __init__(self, n: int, R: int) -> int:
+    def __init__(self, n: int, R: int):
         self._n = n
         self._R = R
 
@@ -87,7 +87,7 @@ class Polygon:
 
     def __eq__(self, other):
         if isinstance(other, self.__class__):
-            return (self.circumradius == other.circumradius and self.edges == other.edges)
+            return self.circumradius == other.circumradius and self.edges == other.edges
         else:
             return NotImplemented
 
@@ -103,7 +103,7 @@ class Polygon:
 
 def main():
     """The main class"""
-    pp = ManyPolygons(20, 4)
+    pp = ManyPolygons(3, 4)
     # Prints the Polygon with the highest area : perimeter ratio
     print(pp.max_efficiency_polygon)
     # Prints all
@@ -125,9 +125,9 @@ def test_polygon():
     R = 1
     p = Polygon(n, R)
     assert str(p) == f"Polygon(n=3, R=1)", f"actual-->  {str(p)}"
-    assert p.edges == n, (f"actual: {p.edges}")
-    assert p.circumradius == R, (f"actual: {p.circumradius}")
-    assert p.interior_angle == 60, (f"actual: {p.circumradius}")
+    assert p.edges == n, f"actual: {p.edges}"
+    assert p.circumradius == R, f"actual: {p.circumradius}"
+    assert p.interior_angle == 60, f"actual: {p.circumradius}"
 
     # Test number 2
     n = 4
@@ -135,8 +135,8 @@ def test_polygon():
     p = Polygon(n, R)
 
     assert str(p) == f"Polygon(n=4, R=1)", f"actual-->  {str(p)}"
-    assert p.edges == n, (f"actual: {p.edges}")
-    assert p.circumradius == R, (f"actual: {p.circumradius}")
+    assert p.edges == n, f"actual: {p.edges}"
+    assert p.circumradius == R, f"actual: {p.circumradius}"
     assert math.isclose(p.interior_angle, 90,
                         rel_tol=rel_tol,
                         abs_tol=abs_tol)
@@ -225,5 +225,5 @@ def test_polygon():
 
 
 if __name__ == "__main__":
-    # test_polygon()
+    test_polygon()
     main()
